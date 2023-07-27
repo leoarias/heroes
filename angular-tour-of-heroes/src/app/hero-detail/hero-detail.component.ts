@@ -17,6 +17,14 @@ export class HeroDetailComponent {
     private heroService: HeroService,
     private location: Location
   ) {}
+
+  save(): void {
+    if (this.hero) {
+      this.heroService.updateHero(this.hero)
+        ;
+    }
+  }
+
   ngOnInit(): void {
     this.getHero();
   }
@@ -26,7 +34,9 @@ export class HeroDetailComponent {
     this.heroService.getHero(id)
       .subscribe(hero => this.hero = hero);
   }
+  
   goBack(): void {
     this.location.back();
   }
+  
 } 
